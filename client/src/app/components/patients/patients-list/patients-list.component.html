@@ -1,0 +1,35 @@
+<div class="mt-4">
+    <ul class="list-group">
+        <li *ngFor="let paciente of patients"
+            class="list-group-item list-group-item-action"
+            (click)="edit(paciente)"
+            [class.active]="paciente == patient">
+            <span class="badge badge-primary">
+                {{paciente.numid}}
+            </span>
+            {{paciente.nombre}} {{paciente.apellido}}
+        </li>
+    </ul>
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="card-title">
+                Insert a new employee
+            </div>
+            <div class="form-group">
+                <input type="text" [(ngModel)]="patient.nombre" placeholder="nombre" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" [(ngModel)]="patient.apellido" placeholder="apellido" class="form-control">
+            </div>
+            <div class="form-group">
+                <input type="text" [(ngModel)]="patient.numid" placeholder="numid" class="form-control">
+            </div>
+            <button class="btn btn-success btn-block" (click)="saveOrEdit()">
+                save
+            </button>
+            <button *ngIf="patient.id !== 0" class="btn btn-danger" (click)="deletePatient()" >
+                delete
+            </button>
+        </div>
+    </div>
+</div>
